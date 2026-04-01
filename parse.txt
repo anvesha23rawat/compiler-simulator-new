@@ -1,0 +1,14 @@
+--- Parsed AST ---
+Program
+  Declaration
+    Type: int
+    Name: a
+  Assignment: a
+    Literal: 10
+  Declaration
+    Type: int
+    Name: b
+  Assignment: a
+    Literal: 5
+    Operator: +
+    Literal: 3

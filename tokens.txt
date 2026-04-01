@@ -1,0 +1,8 @@
+[KEYWORD] int
+[IDENTIFIER] a
+[SYMBOL] =
+[SYMBOL] 10;
+[KEYWORD] float
+[IDENTIFIER] b
+[SYMBOL] =
+[SYMBOL] 20;

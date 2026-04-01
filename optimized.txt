@@ -1,0 +1,3 @@
+--- Optimized Code (Constant Folding) ---
+t1 = 8
+a = t1

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Compiler Design Interface</title>
+  <style>
+  * {
+  background-color: #2c3e50; /* Dark slate blue */
+  color: #ecf0f1;            /* Light gray for text */
+  box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #34495e; /* Slightly lighter dark blue */
+    }
+
+    #left, #right {
+      width: 50%;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #ecf0f1;
+      border-bottom: 2px solid #2980b9; /* subtle blue underline */
+      padding-bottom: 5px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 80%;
+      padding: 15px;
+      border: 1.5px solid #2980b9; /* blue border */
+      border-radius: 10px;
+      font-family: 'Fira Mono', monospace, monospace;
+      font-size: 15px;
+      background-color: #1a252f; /* dark navy background */
+      color: #ecf0f1;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+
+    textarea:focus {
+      border-color: #3498db; /* lighter blue on focus */
+      outline: none;
+    }
+
+    button {
+      margin-top: 15px;
+      margin-right: 10px;
+      padding: 12px 25px;
+      background-color: #2980b9; /* blue */
+      border: none;
+      color: #ecf0f1;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1c5980; /* darker blue on hover */
+    }
+
+    pre {
+      background: #ecf0f1; /* light background for code output */
+      color: #2c3e50;      /* dark text */
+      padding: 20px;
+      height: 80%;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      border-radius: 10px;
+      border: 1.5px solid #bdc3c7;
+      font-family: 'Fira Mono', monospace, monospace;
+      font-size: 14px;
+    }
+    </style>
+</head>
+<body>
+  <div id="left">
+    <h2>Input C++ Code</h2>
+    <textarea id="codeInput"></textarea>
+    <button onclick="processCode('tokenize')">Tokenize</button>
+    <button onclick="processCode('parse')">Parse</button>
+    <button onclick="processCode('semantic')">Semantic</button>
+  </div>
+  <div id="right">
+    <h2 id="outputTitle">Output</h2>
+    <pre id="outputArea"></pre>
+  </div>
+
+  <script>
+    function processCode(action) {
+      const code = document.getElementById("codeInput").value;
+      const titleMap = {
+        tokenize: "Tokens",
+        parse: "Parse Tree",
+        semantic: "Semantic Analysis"
+      };
+      document.getElementById("outputTitle").textContent = titleMap[action];
+
+      fetch("/" + action, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("outputArea").textContent = data.result || data.tokens;
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+Program → DeclarationList StatementList
+
+DeclarationList → Declaration DeclarationList | ε
+Declaration → int Identifier ;
+
+StatementList → Statement StatementList | ε
+Statement → Assignment | IfStatement
+
+Assignment → Identifier = Expression ;
+
+Expression → Term Expression'
+Expression' → + Term Expression' | - Term Expression' | ε
+
+Term → Factor Term'
+Term' → * Factor Term' | / Factor Term' | ε
+
+Factor → Identifier | Number
+
+IfStatement → if ( Expression ) Statement

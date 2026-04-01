@@ -1,0 +1,4 @@
+--- Semantic Analysis ---
+Semantic Error: Undeclared variable 'b' used in expression
+--- Symbol Table ---
+a : int

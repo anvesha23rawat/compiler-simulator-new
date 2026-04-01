@@ -1,0 +1,7 @@
+--- Three Address Code ---
+t1 = 5 + 3
+a = t1
+if a > 5 goto L1
+goto L2
+L1:
+L2:
