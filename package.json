@@ -15,5 +15,15 @@
     "compiler-simulator": "file:",
     "cors": "^2.8.5",
     "express": "^5.1.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anvesha23rawat/compiler-simulator-new.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/anvesha23rawat/compiler-simulator-new/issues"
+  },
+  "homepage": "https://github.com/anvesha23rawat/compiler-simulator-new#readme"
 }
